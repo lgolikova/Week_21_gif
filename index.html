@@ -26,21 +26,19 @@
                     console.log(json);
 
                     try {
-                        if (!json.data.length) {
-                            return false
-                        } else {
-                            for (let i = 0; i < json.data.length; i++) {
-                                let url = json.data[i].images.original.url;
-                                document.getElementById("container").innerHTML += `<img src="${url}">`;
-                            }
+                        for (let i = 0; i < json.data.length; i++) {
+                            let url = json.data[i].images.original.url;
+                            document.getElementById("container").innerHTML += `<img src="${url}">`;
                         }
-
-                    } catch {
-                        alert("Задан пустой запрос")
+                        if (!json.data.length) {
+                            throw new Error("Задан пустой запрос");
+                        }
+                    } catch (error) {
+                        alert("Задан пустой запрос");
                     }
                 })
 
-                .catch(err => console.log(err));
+            // .catch(err => console.log(err));
         }
     </script>
 </body>
