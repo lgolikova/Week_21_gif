@@ -13,7 +13,7 @@ function search() {
                     let url = json.data[i].images.original.url;
                     document.getElementById("container").innerHTML += `<img src="${url}">`;
                 }
-                if (!json.data.length) {
+                if (!searchValue) {
                     throw new Error("Задан пустой запрос");
                 }
             } catch (error) {
